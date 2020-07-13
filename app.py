@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_heroku import Heroku
+#from flask_heroku import Heroku
 from models.user import Db, User
 from modules.forms import IDForm, UserForm, UpdateForm, MockForm
 
