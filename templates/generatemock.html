@@ -9,53 +9,44 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Lab 3</title>
+    <title>Generate Mock Data</title>
 </head>
 <style>
     body
     {
-        background-color: coral;
+        background-color: pink;
     }
-
-    h2
-    {
-        text-align: center;
-    }
-
     div
     {
         text-align: center;
     }
 </style>
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">Lab 3: Working with Databases</h1>
-        <p class="lead">what would you like to do?</p>
+    <div class="jumbotron mb-3">
+        <h1 class="display-4">Generate Data</h1>
+        <p class="lead">please enter the number of mock users to add to the database (they can be deleted later)</p>
         <hr class="my-4">
 
-        <div class="form-row justify-content-center mb-3">
-            <a class="btn btn-info col-2 ml-2" href="/adduser" role="button">Add a User</a>
-            <a class="btn btn-info col-2 ml-2" href="/readuser" role="button">Read a User</a>
-            <a class="btn btn-info col-2 ml-2" href="/deleteuser" role="button">Delete a User</a>
-            <a class="btn btn-info col-2 ml-2" href="updateuser" role="button">Update a User</a>
-        </div>
+        <form class="read-form" method="POST" action="/generatemock">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.number.label }}:
+                {{ form.number }}
+                {% if form.number.errors %}
+                    {% for error in form.number.errors %}
+                        <p class="user-error-message">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
 
-        <div class="form-row justify-content-center">
-            <a class="btn btn-info col-2 ml-2" href="/generatemock" role="button">Generate Mock Data</a>
-            <a class="btn btn-info col-2 ml-2" href="/deletemock" role="button">Delete Mock Data</a>
-        </div>
-
+            <button class="btn btn-info mock-form-submit">Enter</button>
+        </form>
+    </div>
+    <div>
+        <a href="/" class="btn btn-danger">return home</a>
     </div>
 
-    <!-- Loading all of the names in the Database -->
-    <h2>Current Users</h2>
-    {% for user in users %}
-        <div>
-            <p1>{{user.first_name}} {{user.user_id}}</p1>
-        </div>
-    {% endfor %}
-
-    <!-- JS, Poppers.js, and jQuery -->
+     <!-- JS, Poppers.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
